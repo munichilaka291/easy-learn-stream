@@ -3,9 +3,11 @@ import { Home, BookOpen, Trophy, BarChart3, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+type ViewType = 'dashboard' | 'courses' | 'achievements' | 'progress' | 'settings';
+
 interface SidebarProps {
   currentView: string;
-  onViewChange: (view: 'dashboard' | 'course' | 'quiz') => void;
+  onViewChange: (view: ViewType) => void;
   onBackToDashboard: () => void;
 }
 
@@ -37,7 +39,7 @@ export const Sidebar = ({ currentView, onViewChange, onBackToDashboard }: Sideba
                 if (item.id === 'dashboard') {
                   onBackToDashboard();
                 } else {
-                  onViewChange(item.id as any);
+                  onViewChange(item.id as ViewType);
                 }
               }}
             >
